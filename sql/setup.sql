@@ -4,64 +4,40 @@
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title VARCHAR,
-    author VARCHAR
+    released INT
 );
 
 CREATE TABLE authors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    author BIGINT,
-    date_of_birth VARCHAR,
-    place_of_birth VARCHAR
-);
-
-CREATE TABLE books/authors (
-    id BIGINT GENERATED ALWAYS AS IDENTITY,
-    book_id BIGINT,
-    author_id BIGINT,
-    FOREIGN KEY (book_id) REFERENCES books(id)
-    FOREIGN KEY (author_id) REFERENCES authors(id)
+    name VARCHAR,
+    dob DATE,
+    pob VARCHAR
 );
 
 INSERT INTO books (
     id,
     title,
-    author
+    released
 )
-VALUES
-(1, 'The Lathe of Heaven', 'Ursula K LeGuin')
-(2, 'The Sound of the Mountain', 'Yasumari Kawabata')
-(3, 'The Metamorphosis', 'Franz Kafka')
-(4, 'The Yin and Yang of American Culture', 'Eun Y Kim')
-(5, 'Rich Dad Poor Dad', 'Eun Y Kim')
-(6, 'The Unbearable Lightness of Being', 'Milan Kundera')
+VALUES 
+(1, 'The Lathe of Heaven', 1997),
+(2, 'The Sound of the Mountain', 1954),
+(3, 'The Metamorphosis', 1915),
+(4, 'The Yin and Yang of American Culture', 2001),
+(5, 'Rich Dad Poor Dad', 1997),
+(6, 'The Unbearable Lightness of Being', 1984)
 ;
 
 INSERT INTO authors (
-    id,
-    author,
-    date_of_birth,
-    place_of_birth
+    name,
+    dob,
+    pob
 )
 VALUES
-(1, 'Ursula K LeGuin', '10/21/1929', 'Berkeley, CA')
-(2, 'Yasumari Kawabata', '6/11/1899', 'Osaka, Japan')
-(3, 'Franz Kafka', '7/3/1883', 'Prague, Czechia')
-(4, 'Eun Y Kim', '??/??/19??', 'Seoul, South Korea')
-(5, 'Robert T Kiyosaki', '4/8/1947', 'Hilo, Hawaii')
-(6, 'Milan Kundera', '4/1/1929', 'Brno, Czechoslovaki')
-;
-
-INSERT INTO books/authors (
-    book_id,
-    author_id
-)
-VALUES
-(1,1)
-(2,2)
-(2,3)
-(3,3)
-(3,4)
-(4,4)
-(5,4)
-(6,5)
+('Ursula K LeGuin', '1929-10-21', 'Berkeley, CA'),
+('Yasumari Kawabata', '1899-06-11', 'Osaka, Japan'),
+('Franz Kafka', '1883-07-03', 'Prague, Czechia'),
+('Eun Y Kim', '19??-??-??', 'Seoul, S Korea'),
+('Robert T Kiyosaki', '1947-04-08', 'Hilo, Hawaii'),
+('Milan Kundera', '1929-04-01', 'Brno, Czechoslovakia')
 ;
