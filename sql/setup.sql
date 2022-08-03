@@ -2,24 +2,28 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
 CREATE TABLE books (
-    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title VARCHAR,
     author VARCHAR
 );
 
 CREATE TABLE authors (
-    author_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     author BIGINT,
     date_of_birth VARCHAR,
     place_of_birth VARCHAR
 );
 
 CREATE TABLE books/authors (
-
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    book_id BIGINT,
+    author_id BIGINT,
+    FOREIGN KEY (book_id) REFERENCES books(id)
+    FOREIGN KEY (author_id) REFERENCES authors(id)
 );
 
 INSERT INTO books (
-    book_id,
+    id,
     title,
     author
 )
@@ -33,7 +37,7 @@ VALUES
 ;
 
 INSERT INTO authors (
-    author_id,
+    id,
     author,
     date_of_birth,
     place_of_birth
@@ -45,4 +49,19 @@ VALUES
 (4, 'Eun Y Kim', '??/??/19??', 'Seoul, South Korea')
 (5, 'Robert T Kiyosaki', '4/8/1947', 'Hilo, Hawaii')
 (6, 'Milan Kundera', '4/1/1929', 'Brno, Czechoslovaki')
+;
+
+INSERT INTO books/authors (
+    book_id,
+    author_id
+)
+VALUES
+(1,1)
+(2,2)
+(2,3)
+(3,3)
+(3,4)
+(4,4)
+(5,4)
+(6,5)
 ;
