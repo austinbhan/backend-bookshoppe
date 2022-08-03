@@ -25,4 +25,8 @@ describe('book-routes', () => {
 
 
   // getById
+
+  afterAll(() => {
+    pool.end();
+  });
 });
