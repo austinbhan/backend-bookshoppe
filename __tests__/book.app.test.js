@@ -21,15 +21,16 @@ describe('book-routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it('Should return book based on id', async () => {
+  it('Should return book based on id with author', async () => {
     const res = await request(app).get('/books/1');
 
-    const lathe = {
-      id: '1',
-      title: 'The Lathe of Heaven',
-      released: 1997
-    };
-    expect(res.body).toEqual(lathe);
+    console.log(res.body);
+    expect(res.body).toEqual({
+      id:expect.any(String),
+      released:expect.any(Number),
+      title: expect.any(String),
+      authors: expect.any(Array)
+    });
   });
 
   afterAll(() => {
