@@ -8,7 +8,6 @@ describe('book-routes', () => {
     return setup(pool);
   });
 
-  // getByAll
   it('Should return the full list of books', async () => {
     const res = await request(app).get('/books');
     const expected = [
@@ -22,9 +21,16 @@ describe('book-routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('Should return book based on id', async () => {
+    const res = await request(app).get('/books/1');
 
-
-  // getById
+    const lathe = {
+      id: '1',
+      title: 'The Lathe of Heaven',
+      released: 1997
+    };
+    expect(res.body).toEqual(lathe);
+  });
 
   afterAll(() => {
     pool.end();
