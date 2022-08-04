@@ -31,4 +31,15 @@ describe('author-routes', () => {
     };
     expect(res.body).toEqual(LeGuin);
   });
+
+  it('Post author should add a new author', async () => {
+    const resp = await (request(app).post('/authors')).send({ name: 'Name goes here', dob: '1999/01/01', pob: 'Mars, Toilet' });
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      dob: expect.any(String),
+      pob: expect.any(String)
+    });
+  });
 });

@@ -23,8 +23,6 @@ describe('book-routes', () => {
 
   it('Should return book based on id with author', async () => {
     const res = await request(app).get('/books/1');
-
-    console.log(res.body);
     expect(res.body).toEqual({
       id:expect.any(String),
       released:expect.any(Number),
@@ -34,11 +32,12 @@ describe('book-routes', () => {
   });
 
   it('Post books should add a new book', async () => {
-    const resp = await (await request(app).post('/books')).setEncoding({});
+    const resp = await (request(app).post('/books')).send({ title: 'Title Goes Here', released: 1965 });
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
+      id:expect.any(String),
       title: expect.any(String),
-      author: expect.any(Array)
+      released: expect.any(Number)
     });
   });
 
