@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS books_authors;
 
 
 CREATE TABLE books (
@@ -43,3 +44,23 @@ VALUES
 ('Robert T Kiyosaki', '1947-04-08', 'Hilo, Hawaii'),
 ('Milan Kundera', '1929-04-01', 'Brno, Czechoslovakia')
 ;
+
+CREATE TABLE books_authors (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    books_id BIGINT,
+    author_id BIGINT,
+    FOREIGN KEY (books_id) REFERENCES books(id),
+    FOREIGN KEY (author_id) REFERENCES authors(id)
+);
+
+INSERT INTO books_authors (
+    books_id, 
+    author_id
+)
+VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6);
