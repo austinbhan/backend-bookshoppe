@@ -20,4 +20,15 @@ describe('author-routes', () => {
     ];
     expect(res.body).toEqual(expected);
   });
+
+  it('Should return author based on id', async () => {
+    const res = await request(app).get('/authors/1');
+
+    const LeGuin = {
+      name: 'Ursula K LeGuin',
+      dob: '1929-10-21',
+      pob: 'Berkeley, CA'
+    };
+    expect(res.body).toEqual(LeGuin);
+  });
 });
