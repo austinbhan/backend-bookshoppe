@@ -1,6 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS authors;
 
 
 CREATE TABLE books (
@@ -9,12 +10,12 @@ CREATE TABLE books (
     released INT NOT NULL
 );
 
--- CREATE TABLE authors (
---     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---     name VARCHAR NOT NULL,
---     dob DATE NOT NULL,
---     pob VARCHAR NOT NULL
--- );
+CREATE TABLE authors (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    dob VARCHAR NOT NULL,
+    pob VARCHAR NOT NULL
+);
 
 INSERT INTO books (
     title,
@@ -29,16 +30,16 @@ VALUES
 ('The Unbearable Lightness of Being', 1984)
 ;
 
--- INSERT INTO authors (
---     name,
---     dob,
---     pob
--- )
--- VALUES
--- ('Ursula K LeGuin', '1929-10-21', 'Berkeley, CA'),
--- ('Yasumari Kawabata', '1899-06-11', 'Osaka, Japan'),
--- ('Franz Kafka', '1883-07-03', 'Prague, Czechia'),
--- ('Eun Y Kim', '19??-??-??', 'Seoul, S Korea'),
--- ('Robert T Kiyosaki', '1947-04-08', 'Hilo, Hawaii'),
--- ('Milan Kundera', '1929-04-01', 'Brno, Czechoslovakia')
--- ;
+INSERT INTO authors (
+    name,
+    dob,
+    pob
+)
+VALUES
+('Ursula K LeGuin', '1929-10-21', 'Berkeley, CA'),
+('Yasumari Kawabata', '1899-06-11', 'Osaka, Japan'),
+('Franz Kafka', '1883-07-03', 'Prague, Czechia'),
+('Eun Y Kim', '1990-09-23', 'Seoul, S Korea'),
+('Robert T Kiyosaki', '1947-04-08', 'Hilo, Hawaii'),
+('Milan Kundera', '1929-04-01', 'Brno, Czechoslovakia')
+;
