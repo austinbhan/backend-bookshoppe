@@ -33,6 +33,15 @@ describe('book-routes', () => {
     });
   });
 
+  it('Post books should add a new book', async () => {
+    const resp = await (await request(app).post('/books')).setEncoding({});
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      title: expect.any(String),
+      author: expect.any(Array)
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
